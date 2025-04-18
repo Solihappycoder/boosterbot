@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  solibot:
+    image: soli-bot
+    container_name: soli-bot
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+      DISCORD_BOT_TOKEN: "MTMyODIwMTY3NTI2NTE1MDk3Ng.GZJpvf.V-79HEk2dl8R5VdPPaAXGyQ5BKuc5h5NLKbmdw"
+      DISCORD_CLIENT_ID: "1328201675265150976"
+      DISCORD_CLIENT_SECRET: "z1NFroQb31MFtLefJWHc7cSnos5S4mQZ"
+      API_PORT: 3000
+    ports:
+      - 172.29.0.1:3000:3000
+      - 172.29.0.1:9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "./dist/index.js"]
